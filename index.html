@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST Calculator | Biswajit Nayak</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="calculator-panel" aria-labelledby="page-title">
+      <div class="intro">
+        <p class="eyebrow">Simple Indian tax utility</p>
+        <h1 id="page-title">GST Calculator</h1>
+        <p class="summary">Enter an amount, choose a GST rate, and calculate the GST amount plus final payable total instantly.</p>
+      </div>
+
+      <form class="calculator" id="gstForm">
+        <label for="amount">Amount before GST</label>
+        <div class="input-wrap">
+          <span aria-hidden="true">Rs.</span>
+          <input id="amount" name="amount" type="number" min="0" step="0.01" placeholder="1000" required>
+        </div>
+
+        <fieldset>
+          <legend>GST Rate</legend>
+          <div class="rate-grid">
+            <label>
+              <input type="radio" name="gstRate" value="5">
+              <span>5%</span>
+            </label>
+            <label>
+              <input type="radio" name="gstRate" value="12">
+              <span>12%</span>
+            </label>
+            <label>
+              <input type="radio" name="gstRate" value="18" checked>
+              <span>18%</span>
+            </label>
+            <label>
+              <input type="radio" name="gstRate" value="28">
+              <span>28%</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="primary-action">Calculate GST</button>
+      </form>
+
+      <section class="results" aria-live="polite" aria-label="Calculation result">
+        <div>
+          <span>GST Amount</span>
+          <strong id="gstAmount">Rs. 0.00</strong>
+        </div>
+        <div>
+          <span>Final Amount</span>
+          <strong id="finalAmount">Rs. 0.00</strong>
+        </div>
+      </section>
+
+      <p class="error" id="errorMessage" role="alert"></p>
+    </section>
+
+    <aside class="profile-panel" aria-label="Developer details">
+      <p>Created by</p>
+      <h2>Biswajit Nayak</h2>
+      <a href="mailto:nbiswajit978@gmail.com">nbiswajit978@gmail.com</a>
+      <button type="button" id="digitalHeroesButton">Built for Digital Heroes</button>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
