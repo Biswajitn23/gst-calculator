@@ -3,10 +3,7 @@
   --muted: #6b7280;
   --accent: #6366f1;
   --accent-dark: #4f46e5;
-  --accent-soft: #eef2ff;
   --danger: #ef4444;
-  --card-bg: rgba(255, 255, 255, 0.75);
-  --card-border: rgba(255, 255, 255, 0.3);
 }
 
 * {
@@ -14,29 +11,34 @@
   margin: 0;
 }
 
-body {
-  height: 100vh;
+html, body {
+  height: 100%;
   overflow: hidden;
+}
+
+body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   color: var(--ink);
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 
-/* Animated background particles */
+/* Star particles */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(2px 2px at 60% 20%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(2px 2px at 80% 80%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(2px 2px at 10% 90%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(2px 2px at 90% 10%, rgba(255,255,255,0.2), transparent);
+    radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(2px 2px at 35% 65%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(2px 2px at 55% 15%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 75% 75%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(2px 2px at 8% 85%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(2px 2px at 92% 8%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 50% 50%, rgba(255,255,255,0.15), transparent);
   pointer-events: none;
   z-index: 0;
 }
@@ -44,42 +46,46 @@ body::before {
 .app-shell {
   position: relative;
   z-index: 1;
-  width: min(880px, calc(100% - 20px));
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  max-height: 600px;
   display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: 14px;
-  align-items: stretch;
+  grid-template-columns: 1fr 220px;
+  gap: 12px;
 }
 
 .calculator-panel,
 .profile-panel {
-  background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
 }
 
 .calculator-panel {
-  padding: 24px 28px;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .eyebrow {
   color: var(--accent);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.65rem;
   font-weight: 800;
-  margin-bottom: 2px;
+  line-height: 1.1;
+  margin-bottom: 1px;
   background: linear-gradient(135deg, var(--ink), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -88,21 +94,20 @@ h1 {
 
 .summary {
   color: var(--muted);
-  font-size: 0.82rem;
-  margin-bottom: 16px;
-  line-height: 1.5;
+  font-size: 0.75rem;
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
 .calculator {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 label, legend {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--ink);
-  margin-bottom: 2px;
 }
 
 .input-wrap {
@@ -110,22 +115,22 @@ label, legend {
   align-items: center;
   background: white;
   border: 1.5px solid #e5e7eb;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input-wrap:focus-within {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
 }
 
 .input-wrap span {
-  min-width: 44px;
-  padding: 10px 12px;
+  min-width: 40px;
+  padding: 8px 10px;
   color: var(--muted);
   border-right: 1px solid #e5e7eb;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
 }
@@ -134,8 +139,8 @@ label, legend {
   width: 100%;
   border: 0;
   outline: 0;
-  padding: 10px 14px;
-  font-size: 0.95rem;
+  padding: 8px 12px;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--ink);
   background: transparent;
@@ -146,7 +151,6 @@ label, legend {
   font-weight: 400;
 }
 
-/* Remove number input spinners */
 .input-wrap input[type="number"]::-webkit-inner-spin-button,
 .input-wrap input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -161,57 +165,106 @@ fieldset {
   padding: 0;
 }
 
-.rate-grid {
+.rate-section {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  margin-top: 6px;
+  grid-template-columns: 1fr 100px;
+  gap: 8px;
+  align-items: end;
 }
 
-.rate-grid label {
+.rate-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.rate-presets label {
   display: block;
 }
 
-.rate-grid input {
+.rate-presets input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-.rate-grid span {
+.rate-presets span {
   display: grid;
-  min-height: 38px;
+  min-height: 34px;
   place-items: center;
   background: white;
   border: 1.5px solid #e5e7eb;
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--muted);
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
-.rate-grid span:hover {
+.rate-presets span:hover {
   border-color: #c7d2fe;
   background: #f5f3ff;
 }
 
-.rate-grid input:checked + span {
+.rate-presets input:checked + span {
   border-color: var(--accent);
   background: linear-gradient(135deg, #eef2ff, #e0e7ff);
   color: var(--accent-dark);
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
 }
 
-.primary-action {
-  min-height: 44px;
+.custom-rate-wrap {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.custom-rate-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.custom-rate-wrap input {
+  width: 100%;
   border: 0;
-  border-radius: 12px;
+  outline: 0;
+  padding: 7px 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  text-align: center;
+}
+
+.custom-rate-wrap span {
+  padding: 7px 6px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.custom-rate-wrap input[type="number"]::-webkit-inner-spin-button,
+.custom-rate-wrap input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.custom-rate-wrap input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.primary-action {
+  min-height: 40px;
+  border: 0;
+  border-radius: 10px;
   background: linear-gradient(135deg, var(--accent), #818cf8);
   color: white;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s;
   letter-spacing: 0.3px;
@@ -230,16 +283,15 @@ fieldset {
 .results {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .results div {
-  padding: 14px 16px;
+  padding: 12px 14px;
   background: white;
   border: 1.5px solid #e5e7eb;
-  border-radius: 12px;
-  transition: border-color 0.2s;
+  border-radius: 10px;
 }
 
 .results div:first-child {
@@ -249,9 +301,9 @@ fieldset {
 
 .results span {
   display: block;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -259,7 +311,7 @@ fieldset {
 
 .results strong {
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: var(--ink);
   overflow-wrap: anywhere;
@@ -270,57 +322,56 @@ fieldset {
 }
 
 .error {
-  min-height: 20px;
-  margin-top: 8px;
+  min-height: 18px;
+  margin-top: 6px;
   color: var(--danger);
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 /* Profile Panel */
 .profile-panel {
-  padding: 24px 20px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   text-align: center;
   align-items: center;
+  justify-content: center;
 }
 
 .profile-panel .avatar {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), #818cf8);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  margin-bottom: 4px;
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
 
 .profile-panel .label {
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .profile-panel h2 {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 800;
-  margin-bottom: 0;
   line-height: 1.2;
 }
 
 .profile-panel a {
   color: var(--accent);
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   text-decoration: none;
   overflow-wrap: anywhere;
   transition: color 0.2s;
@@ -333,13 +384,13 @@ fieldset {
 
 .profile-panel button {
   width: 100%;
-  min-height: 40px;
+  min-height: 36px;
   border: 1.5px solid var(--accent);
   border-radius: 10px;
   background: transparent;
   color: var(--accent);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   cursor: pointer;
   transition: all 0.25s;
   margin-top: auto;
@@ -355,39 +406,42 @@ fieldset {
 @media (max-width: 720px) {
   body {
     overflow-y: auto;
-    height: auto;
-    min-height: 100vh;
-    padding: 12px 0;
+    padding: 8px;
   }
 
   .app-shell {
     grid-template-columns: 1fr;
-    gap: 12px;
+    max-height: none;
+    height: auto;
+    gap: 10px;
   }
 
   .profile-panel {
     order: -1;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 16px 20px;
-    gap: 6px 14px;
+    padding: 14px 16px;
+    gap: 4px 12px;
   }
 
   .profile-panel .avatar {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-    margin-bottom: 0;
-  }
-
-  .profile-panel h2 {
+    width: 36px;
+    height: 36px;
     font-size: 1rem;
   }
 
   .profile-panel button {
     margin-top: 0;
     width: auto;
-    padding: 0 18px;
+    padding: 0 14px;
+    min-height: 32px;
+  }
+
+  .rate-section {
+    grid-template-columns: 1fr;
+  }
+
+  .custom-rate-wrap {
+    max-width: 160px;
   }
 }
